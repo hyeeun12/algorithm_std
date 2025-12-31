@@ -1,14 +1,8 @@
-N = int(input())
+import sys
+input = sys.stdin.read
 
-lst = []
-idx = 0
-for i in range(N):
-    age, name = input().split()
-    lst.append((int(age), name, idx))
+_, *lst = input().splitlines()
 
-    idx += 1
+lst.sort(key=lambda x : int(x.split()[0]))
 
-lst.sort(key=lambda x: (x[0], x[2]))
-
-for i in lst:
-    print(f'{i[0]} {i[1]}')
+print(*lst, end="\n")
