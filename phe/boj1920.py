@@ -4,12 +4,12 @@ import sys
 input = sys.stdin.readline
 
 # N = int(input())
-# a = set(map(int, input().split()))
+# ans = set(map(int, input().split()))
 # M = int(input())
 # b = list(map(int, input().split()))
 #
 # for num in b:
-#     if num in a:
+#     if num in ans:
 #         print(1)
 #     else:
 #         print(0)
