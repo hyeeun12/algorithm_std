@@ -34,15 +34,15 @@ c1 = [0] * (n + 1)
 c2 = [0] * (n + 1)
 
 for _ in range(n):
-    p, lc, rc = input().split()
-    if lc != '.':
-        c1[dic1[p]] = dic1[lc]
-    if rc != '.':
-        c2[dic1[p]] = dic1[rc]
+    parent, left_child, right_child = input().split()
+    if left_child != '.':
+        c1[dic1[parent]] = dic1[left_child]
+    if right_child != '.':
+        c2[dic1[parent]] = dic1[right_child]
 
 preorder(1)
-print("")
+print()
 inorder(1)
-print("")
+print()
 postorder(1)
 
