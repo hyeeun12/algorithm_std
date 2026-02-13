@@ -1,20 +1,32 @@
-#1로 만들기
+#신나는 함수 실행
 
 import sys
 input = sys.stdin.readline
 
-N = int(input())
-calculation = [0] * (N + 1)
+w = [[[0] * 21 for _ in range(21)] for _ in range(21)]
 
-for n in range(2, N + 1):
+for i in range(21):
+    for j in range(21):
+        for k in range(21):
+            if i <= 0 or j <= 0 or k <= 0:
+                w[i][j][k] = 1
+            elif i < j < k:
+                w[i][j][k] = w[i][j][k - 1] + w[i][j - 1][k - 1] - w[i][j - 1][k]
+            else:
+                w[i][j][k] = w[i-1][j][k] + w[i-1][j-1][k] + w[i-1][j][k-1] - w[i-1][j-1][k-1]
 
-    if n % 6 == 0:
-        calculation[n] = min(calculation[n // 3], calculation[n // 2], calculation[n - 1]) + 1
-    elif n % 3 == 0:
-        calculation[n] = min(calculation[n // 3], calculation[n - 1]) + 1
-    elif n % 2 == 0:
-        calculation[n] = min(calculation[n // 2], calculation[n - 1]) + 1
+
+a = b = c = 0
+while True:
+
+    a, b, c = map(int, input().split())
+
+    if a == b == c == -1:
+        break
+
+    if a <= 0 or b <= 0 or c <= 0:
+        print(f'w({a}, {b}, {c}) = 1')
+    elif a > 20 or b > 20 or c > 20:
+        print(f'w({a}, {b}, {c}) = {w[20][20][20]}')
     else:
-        calculation[n] = calculation[n - 1] + 1
-
-print(calculation[N])
+        print(f'w({a}, {b}, {c}) = {w[a][b][c]}')
